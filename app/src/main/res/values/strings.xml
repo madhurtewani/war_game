@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">War</string>
+    <string name="label_play_the">Let\'s play the</string>
+    <string name="label_war">War</string>
+    <string name="label_game_rules_title">Before we begin with the \"War\" cards game, let\'s understand the game:</string>
+    <string-array name="label_game_rules">
+        <item>• This game can be played between 2–4 players.</item>
+        <item>• A deck of cards is dealt equally among all the players.</item>
+        <item>• A card is drawn randomly from each player\'s pile.</item>
+        <item>• The player with the highest card wins 1 battle.</item>
+        <item>• The battle winner gets the cards of other players in his/her pile of cards.</item>
+        <item>• If there is a tie between players with the same card, the player with the higher number of cards in the pile wins.</item>
+        <item>• If there is still a tie then a random player wins the battle.</item>
+        <item>• The game continues until a single player has won 10 such battles or a player runs out of the cards in his/her pile.</item>
+    </string-array>
+    <string name="action_play">Play!</string>
+    <string name="label_invite_your_friends">Invite your friends</string>
+    <string name="label_play_up_to_4_friends">Play up to 4 players</string>
+    <string name="action_2_players">2 Players</string>
+    <string name="action_3_players">3 Players</string>
+    <string name="action_4_players">4 Players</string>
+    <string name="hint_player_1_name">Player 1 Name</string>
+    <string name="hint_player_2_name">Player 2 Name</string>
+    <string name="hint_player_3_name">Player 3 Name</string>
+    <string name="hint_player_4_name">Player 4 Name</string>
+    <string name="action_back">Back</string>
+    <string name="error_please_enter_player_name">Please enter player name</string>
+    <string name="label_war_time">War Time</string>
+    <string name="action_draw_card">Draw a Card</string>
+    <string name="label_score_value">Score: %1$s</string>
+    <string name="loading_preparing_your_game">Preparing your game.\nPlease wait…</string>
+    <string name="loading_drawing_card">Drawing a card.\nPlease wait…</string>
+    <string name="error_player_name_should_be_unique">Please enter unique names for all players</string>
+    <string name="label_congratulations">Congratulations %1$s!</string>
+    <string name="label_winning_score"><![CDATA[You won with a\nscore of <b>%1$s</b>]]></string>
+    <string name="action_play_again">Play Again!</string>
+    <string name="action_home">Home</string>
+</resources>

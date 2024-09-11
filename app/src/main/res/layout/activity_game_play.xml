@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="co.tewani.war.gamePlay.GamePlayViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".gamePlay.GamePlayActivity">
+
+        <View
+            android:id="@+id/v_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.5"
+            android:background="?attr/colorSurface"
+            android:clickable="true"
+            android:elevation="59dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/cpi_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="60dp"
+            android:indeterminate="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_progress_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:elevation="60dp"
+            android:gravity="center"
+            android:text="@{viewModel.networkCallProgressMessage}"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintStart_toEndOf="@+id/guide_start"
+            app:layout_constraintTop_toBottomOf="@+id/cpi_progress" />
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.isNetworkCallInProgress ? View.VISIBLE : View.GONE}"
+            app:constraint_referenced_ids="cpi_progress,tv_progress_message,v_progress" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="24dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="24dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="24dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="24dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_top_bar_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_bottom_bar_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:gravity="center"
+            android:text="@string/label_war_time"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/guide_top_bar_bottom"
+            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintStart_toEndOf="@+id/guide_start"
+            app:layout_constraintTop_toBottomOf="@+id/guide_top" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_player_1_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@{viewModel.gamePlayConfig.player1Name}"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/iv_player_1_card"
+            app:layout_constraintEnd_toStartOf="@+id/guide_center_vertical"
+            app:layout_constraintStart_toEndOf="@+id/guide_start"
+            app:layout_constraintTop_toBottomOf="@+id/guide_top_bar_bottom" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_player_1_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            app:imageUrl="@{viewModel.player1Card.cardUrl}"
+            app:layout_constraintBottom_toTopOf="@+id/tv_player_1_score"
+            app:layout_constraintEnd_toStartOf="@+id/guide_center_vertical"
+            app:layout_constraintStart_toEndOf="@+id/guide_start"
+            app:layout_constraintTop_toBottomOf="@+id/tv_player_1_name" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_player_1_score"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@{@string/label_score_value(viewModel.player1Card.score)}"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/guide_center_horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/guide_center_vertical"
+            app:layout_constraintStart_toEndOf="@+id/guide_start"
+            app:layout_constraintTop_toBottomOf="@+id/iv_player_1_card" />
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="tv_player_1_name,tv_player_1_score,iv_player_1_card" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_player_2_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@{viewModel.gamePlayConfig.player2Name}"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/iv_player_2_card"
+            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintStart_toEndOf="@+id/guide_center_vertical"
+            app:layout_constraintTop_toBottomOf="@+id/guide_top_bar_bottom" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_player_2_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            app:imageUrl="@{viewModel.player2Card.cardUrl}"
+            app:layout_constraintBottom_toTopOf="@+id/tv_player_2_score"
+            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintStart_toEndOf="@+id/guide_center_vertical"
+            app:layout_constraintTop_toBottomOf="@+id/tv_player_2_name" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_player_2_score"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@{@string/label_score_value(viewModel.player2Card.score)}"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/guide_center_horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintStart_toEndOf="@+id/guide_center_vertical"
+            app:layout_constraintTop_toBottomOf="@+id/iv_player_2_card" />
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="tv_player_2_name,tv_player_2_score,iv_player_2_card" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_player_3_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@{viewModel.gamePlayConfig.player3Name}"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/iv_player_3_card"
+            app:layout_constraintEnd_toStartOf="@+id/guide_center_vertical"
+            app:layout_constraintStart_toEndOf="@+id/guide_start"
+            app:layout_constraintTop_toBottomOf="@+id/guide_center_horizontal" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_player_3_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            app:imageUrl="@{viewModel.player3Card.cardUrl}"
+            app:layout_constraintBottom_toTopOf="@+id/tv_player_3_score"
+            app:layout_constraintEnd_toStartOf="@+id/guide_center_vertical"
+            app:layout_constraintStart_toEndOf="@+id/guide_start"
+            app:layout_constraintTop_toBottomOf="@+id/tv_player_3_name" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_player_3_score"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@{@string/label_score_value(viewModel.player3Card.score)}"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/guide_bottom_bar_top"
+            app:layout_constraintEnd_toStartOf="@+id/guide_center_vertical"
+            app:layout_constraintStart_toEndOf="@+id/guide_start"
+            app:layout_constraintTop_toBottomOf="@+id/iv_player_3_card" />
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.gamePlayConfig.numberOfPlayers >= 3 ? View.VISIBLE : View.GONE}"
+            app:constraint_referenced_ids="tv_player_3_name,tv_player_3_score,iv_player_3_card" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_player_4_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@{viewModel.gamePlayConfig.player4Name}"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/iv_player_4_card"
+            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintStart_toEndOf="@+id/guide_center_vertical"
+            app:layout_constraintTop_toBottomOf="@+id/guide_center_horizontal" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_player_4_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            app:imageUrl="@{viewModel.player4Card.cardUrl}"
+            app:layout_constraintBottom_toTopOf="@+id/tv_player_4_score"
+            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintStart_toEndOf="@+id/guide_center_vertical"
+            app:layout_constraintTop_toBottomOf="@+id/tv_player_4_name" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_player_4_score"
+            style="@style/MaterialAlertDialog.Material3.Body.Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@{@string/label_score_value(viewModel.player4Card.score)}"
+            app:layout_constraintBottom_toTopOf="@+id/guide_bottom_bar_top"
+            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintStart_toEndOf="@+id/guide_center_vertical"
+            app:layout_constraintTop_toBottomOf="@+id/iv_player_4_card" />
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.gamePlayConfig.numberOfPlayers >= 4 ? View.VISIBLE : View.GONE}"
+            app:constraint_referenced_ids="tv_player_4_name,tv_player_4_score,iv_player_4_card" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/b_draw_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:enabled="@{!viewModel.isGameOver()}"
+            android:text="@string/action_draw_card"
+            app:layout_constraintBottom_toTopOf="@+id/guide_bottom"
+            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintStart_toEndOf="@+id/guide_start"
+            app:layout_constraintTop_toBottomOf="@+id/guide_bottom_bar_top" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_winner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="v_winner_bg,mcv_winner_card" />
+
+        <View
+            android:id="@+id/v_winner_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.5"
+            android:background="?attr/colorSurface"
+            android:clickable="true"
+            android:elevation="59dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcv_winner_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            app:cardBackgroundColor="?attr/colorTertiaryContainer"
+            app:cardElevation="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_congratulations"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="24dp"
+                    android:gravity="center"
+                    android:textColor="?attr/colorOnTertiaryContainer"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_congratulations_message"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="24dp"
+                    android:gravity="center"
+                    android:textColor="?attr/colorTertiary"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_congratulations" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/b_back"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="24dp"
+                    android:text="@string/action_home"
+                    android:textColor="?attr/colorTertiary"
+                    app:layout_constraintBottom_toBottomOf="@+id/b_play_again"
+                    app:layout_constraintEnd_toStartOf="@+id/b_play_again"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/b_play_again"
+                    app:strokeColor="?attr/colorTertiary" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/b_play_again"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="24dp"
+                    android:backgroundTint="?attr/colorTertiary"
+                    android:text="@string/action_play_again"
+                    android:textColor="?attr/colorTertiaryContainer"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/b_back"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_congratulations_message" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

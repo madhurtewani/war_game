@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="co.tewani.war.gamePlayConfig.GamePlayConfigViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".gamePlayConfig.GamePlayConfigActivity">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="24dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="24dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="24dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="24dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:gravity="center"
+            android:text="@string/label_invite_your_friends"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_title_desc"
+            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintStart_toEndOf="@+id/guide_start"
+            app:layout_constraintTop_toBottomOf="@+id/guide_top" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_title_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
+            android:text="@string/label_play_up_to_4_friends"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/guide_top_bar_bottom"
+            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintStart_toEndOf="@+id/guide_start"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_top_bar_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/btg_number_of_players"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            app:checkedButton="@id/b_2_players"
+            app:layout_constraintBottom_toTopOf="@+id/til_player_1"
+            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintStart_toEndOf="@+id/guide_start"
+            app:layout_constraintTop_toBottomOf="@+id/guide_top_bar_bottom"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <Button
+                android:id="@+id/b_2_players"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_2_players" />
+
+            <Button
+                android:id="@+id/b_3_players"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_3_players" />
+
+            <Button
+                android:id="@+id/b_4_players"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_4_players" />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_player_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:hint="@string/hint_player_1_name"
+            app:endIconMode="clear_text"
+            app:layout_constraintBottom_toTopOf="@+id/til_player_2"
+            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintStart_toEndOf="@+id/guide_start"
+            app:layout_constraintTop_toBottomOf="@+id/btg_number_of_players"
+            app:layout_constraintVertical_bias="0">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_player_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_player_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:hint="@string/hint_player_2_name"
+            app:endIconMode="clear_text"
+            app:layout_constraintBottom_toTopOf="@+id/til_player_3"
+            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintStart_toEndOf="@+id/guide_start"
+            app:layout_constraintTop_toBottomOf="@+id/til_player_1"
+            app:layout_constraintVertical_bias="0">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_player_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_player_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:hint="@string/hint_player_3_name"
+            android:visibility="@{viewModel.numberOfPlayers >= 3 ? View.VISIBLE : View.INVISIBLE}"
+            app:endIconMode="clear_text"
+            app:layout_constraintBottom_toTopOf="@+id/til_player_4"
+            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintStart_toEndOf="@+id/guide_start"
+            app:layout_constraintTop_toBottomOf="@+id/til_player_2"
+            app:layout_constraintVertical_bias="0">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_player_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_player_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:hint="@string/hint_player_4_name"
+            android:visibility="@{viewModel.numberOfPlayers >= 4 ? View.VISIBLE : View.INVISIBLE}"
+            app:endIconMode="clear_text"
+            app:layout_constraintBottom_toTopOf="@+id/guide_bottom_bar_top"
+            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintStart_toEndOf="@+id/guide_start"
+            app:layout_constraintTop_toBottomOf="@+id/til_player_3"
+            app:layout_constraintVertical_bias="0">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_player_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_bottom_bar_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/b_back"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:text="@string/action_back"
+            app:strokeColor="?attr/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/b_play_game"
+            app:layout_constraintEnd_toStartOf="@+id/b_play_game"
+            app:layout_constraintStart_toEndOf="@+id/guide_start"
+            app:layout_constraintTop_toTopOf="@+id/b_play_game" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/b_play_game"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:text="@string/action_play"
+            app:layout_constraintBottom_toTopOf="@+id/guide_bottom"
+            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintStart_toEndOf="@+id/b_back"
+            app:layout_constraintTop_toBottomOf="@+id/guide_bottom_bar_top" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
